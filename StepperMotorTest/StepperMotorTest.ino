@@ -13,7 +13,8 @@
 
 // Motor steps per revolution. Most steppers are 200 steps or 1.8 degrees/step
 #define MOTOR_STEPS 200
-#define RPM 120
+
+#define RPM 450   // Change to modify speed
 
 // Since microstepping is set externally, make sure this matches the selected mode
 // If it doesn't, the motor will move at a different RPM than chosen
@@ -51,10 +52,11 @@ void loop() {
     /*
      * Moving motor to original position using steps
      */
+    delay(1000);
     stepper.move(MOTOR_STEPS*MICROSTEPS*20);
 
     // pause and allow the motor to be moved by hand
     // stepper.disable();
 
-    delay(5000);
+    delay(1000);
 }

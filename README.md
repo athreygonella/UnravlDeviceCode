@@ -19,3 +19,22 @@ Varun Godbole
 Natacha Ramioulle
 
 
+## Testing Circuit Schematics
+
+### Linear Servo Testing:
+* Set Motor Power Supply Voltage to 6 V
+* Use Arduino digital pin 8 for control wire
+
+![Alt text](Servo_Test_Diagram.jpg)
+
+### Stepper Motor Testing:
+ * Set Motor Power Supply Voltage to 24 V
+ * V<sub>DD</sub> is 5V
+ * Use Arduino digital pin 2 for DIR
+ * Use Arduino digital pin 3 for STEP
+
+![Alt text](Stepper_Test_Diagram.jpg)
+
+
+
+

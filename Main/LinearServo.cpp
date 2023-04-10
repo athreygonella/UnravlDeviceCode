@@ -7,7 +7,7 @@
 #include "Arduino.h"
 
 void LinearServo::retract(Servo s) {
-    moveToPosMM(s, 30);
+    moveToPosMM(s, 0);
 }
 
 void LinearServo::extend(Servo s) {

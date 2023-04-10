@@ -168,6 +168,9 @@ public:
      * Rotate using a float or double for increased movement precision.
      */
     void rotate(double deg);
+
+    void displaceLinear(float deltaY, float lead);
+
     /*
      * Configure which logic state on ENABLE pin means active
      * when using SLEEP (default) this is active HIGH

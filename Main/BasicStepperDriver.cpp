@@ -116,6 +116,11 @@ void BasicStepperDriver::rotate(double deg){
     move(calcStepsForRotation(deg));
 }
 
+void BasicStepperDriver::displaceLinear(float deltaY, float lead) {
+    float revolutions = deltaY / lead;
+    rotate(360*revolutions);
+}
+
 /*
  * Set up a new move (calculate and save the parameters)
  */

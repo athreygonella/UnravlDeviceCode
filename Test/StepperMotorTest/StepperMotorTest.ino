@@ -43,17 +43,23 @@ void loop() {
   
     // energize coils - the motor will hold position
     // stepper.enable();
+
+    float verticalStep = 5;   // cm
+    float lead = 0.2;  // cm
+    float revolutions = verticalStep/lead;
   
     /*
      * Moving motor one full revolution using the degree notation
      */
-    stepper.rotate(-360*20);
+//    stepper.rotate(-360*revolutions);
+    stepper.displaceLinear(-verticalStep, lead);
 
     /*
      * Moving motor to original position using steps
      */
     delay(1000);
-    stepper.move(MOTOR_STEPS*MICROSTEPS*20);
+//    stepper.move(MOTOR_STEPS*MICROSTEPS*revolutions);
+    stepper.displaceLinear(verticalStep, lead);
 
     // pause and allow the motor to be moved by hand
     // stepper.disable();

@@ -116,6 +116,9 @@ void BasicStepperDriver::rotate(double deg){
     move(calcStepsForRotation(deg));
 }
 
+/*
+ * Move the lead screw nut linearly.
+ */
 void BasicStepperDriver::displaceLinear(float deltaY, float lead) {
     float revolutions = deltaY / lead;
     rotate(360*revolutions);

@@ -4,7 +4,7 @@
 #include <Servo.h>
 #include "LinearServo.h"
 
-#define PIN_SERVO (8)
+#define PIN_SERVO (5)
 
 LinearServo myServo;
 

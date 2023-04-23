@@ -14,7 +14,7 @@
 // Motor steps per revolution. Most steppers are 200 steps or 1.8 degrees/step
 #define MOTOR_STEPS 200
 
-#define RPM 450   // Change to modify speed
+#define RPM 500   // Change to modify speed
 
 // Since microstepping is set externally, make sure this matches the selected mode
 // If it doesn't, the motor will move at a different RPM than chosen
@@ -22,8 +22,8 @@
 #define MICROSTEPS 1
 
 // All the wires needed for full functionality
-#define DIR 2
-#define STEP 3
+#define DIR 3
+#define STEP 2
 //Uncomment line to use enable/disable functionality
 //#define SLEEP 13
 
@@ -37,6 +37,7 @@ void setup() {
     stepper.begin(RPM, MICROSTEPS);
     // if using enable/disable on ENABLE pin (active LOW) instead of SLEEP uncomment next line
     // stepper.setEnableActiveState(LOW);
+    delay(1000);
 }
 
 void loop() {
@@ -44,22 +45,24 @@ void loop() {
     // energize coils - the motor will hold position
     // stepper.enable();
 
-    float verticalStep = 5;   // cm
-    float lead = 0.2;  // cm
-    float revolutions = verticalStep/lead;
+//    float verticalStep = 5;   // cm
+//    float lead = 0.2;  // cm
+//    float revolutions = verticalStep/lead;
   
     /*
      * Moving motor one full revolution using the degree notation
      */
-//    stepper.rotate(-360*revolutions);
-    stepper.displaceLinear(-verticalStep, lead);
+    stepper.rotate(360*20);
+    int x = 1;
+    //stepper.displaceLinear(-verticalStep, lead);
 
     /*
      * Moving motor to original position using steps
      */
     delay(1000);
-//    stepper.move(MOTOR_STEPS*MICROSTEPS*revolutions);
-    stepper.displaceLinear(verticalStep, lead);
+    //stepper.move(MOTOR_STEPS*MICROSTEPS*4);
+    stepper.rotate(360*-20);
+    // stepper.displaceLinear(-verticalStep, lead);
 
     // pause and allow the motor to be moved by hand
     // stepper.disable();

@@ -11,7 +11,7 @@ void LinearServo::retract(Servo s) {
 }
 
 void LinearServo::extend(Servo s) {
-    moveToPosMM(s, 25);
+    moveToPosMM(s, 21);
 }
 
 void LinearServo::moveToPosMM(Servo s, int length) {

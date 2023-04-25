@@ -11,7 +11,7 @@
 
 // For Stepper Motor
 #define MOTOR_STEPS 200
-#define RPM 600
+#define RPM 580
 #define MICROSTEPS 1
 #define DIR 3
 #define STEP 2
@@ -55,7 +55,7 @@ void setup() {
 
   // Initialize stepper motor and lead screw
   stepper.begin(RPM, MICROSTEPS);
-  delay(1000);
+  delay(100);
 
   // Initialize Analog Joystick
   pinMode(SW_PIN, INPUT);
@@ -156,7 +156,7 @@ void setup() {
   // Initialize linear servo
   myServo.attach(PIN_SERVO);
   myServo.retract(myServo);
-  delay(3000);
+  delay(1500);
 
   // go down IF switch is not pressed
   limitSwitch.loop();
@@ -172,11 +172,12 @@ void setup() {
   }
   
   stepper.displaceLinear(0.2, SCREW_LEAD);  // just to move away from limit switch a lil bit
+  delay(500);
   
   float offset = 0.6;
   startHeight = startHeight * 2.54; // convert startHeight from in to cm
-  delay(500);
-  stepper.displaceLinear(startHeight + offset, SCREW_LEAD);  
+  stepper.displaceLinear(startHeight + offset, SCREW_LEAD); 
+  delay(500); 
   currentHeight = startHeight + offset + 6;
 
   unravel();
@@ -214,9 +215,9 @@ void setStartingHeight() {
 
 void unravel() {
  
-  delay(1000);
+  delay(100);
 
-  float verticalStep = 0.5; // cm
+  float verticalStep = 0.25; // cm
   float topLimit = 30;      // cm
 
   for (float insertionHeight = verticalStep; currentHeight <= topLimit; insertionHeight += verticalStep) {
@@ -226,19 +227,19 @@ void unravel() {
     Serial.println(currentHeight);
     
     // Move up to insertion location
-    stepper.displaceLinear(insertionHeight, SCREW_LEAD);
-    delay(1000);
+    stepper.displaceLinear(insertionHeight + 0.4*(insertionHeight - verticalStep), SCREW_LEAD);
+    delay(500);
 
     // Insert in
     myServo.extend(myServo);
-    delay(3000);
+    delay(1500);
 
     // Move down to bottom
-    stepper.displaceLinear(-insertionHeight, SCREW_LEAD);
-    delay(1000);
+    stepper.displaceLinear(-insertionHeight*1.4, SCREW_LEAD);
+    delay(500);
 
     // Insert out
     myServo.retract(myServo);
-    delay(3000);
+    delay(1500);
   }
 }

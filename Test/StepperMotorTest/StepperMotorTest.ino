@@ -52,8 +52,7 @@ void loop() {
     /*
      * Moving motor one full revolution using the degree notation
      */
-    stepper.rotate(360*20);
-    int x = 1;
+    stepper.rotate(360*6);
     //stepper.displaceLinear(-verticalStep, lead);
 
     /*
@@ -61,7 +60,7 @@ void loop() {
      */
     delay(1000);
     //stepper.move(MOTOR_STEPS*MICROSTEPS*4);
-    stepper.rotate(360*-20);
+    stepper.rotate(-360*6);
     // stepper.displaceLinear(-verticalStep, lead);
 
     // pause and allow the motor to be moved by hand
